@@ -10,8 +10,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Armel Munyaneza-Software Enginner",
-  description: "Armel Munyaneza-Software Enginner",
+  title: "Akhil-Software Enginner",
+  description: "Akhil-Software Enginner",
   manifest: "/manifest.json",
 };
 
