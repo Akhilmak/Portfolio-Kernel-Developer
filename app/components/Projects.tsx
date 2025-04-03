@@ -24,8 +24,8 @@ const projects = [
     { name: "Redux", icon: "/redux.svg" },
       { "name": "shadcn UI ", icon: "/shadcnui.svg" },
     ],
-    "livePreviewUrl": "https://gahigi.ini.rw/",
-    "githubUrl": "https://github.com/Gaahigi/gahigi-monorepo",
+    "livePreviewUrl": "https://trademind.vercel.app/",
+    "githubUrl": "https://github.com/Akhilmak/TradeMind",
     "imageSrc": "/trademind.jpg"
 },
 {
@@ -49,8 +49,8 @@ const projects = [
     { "name": "CSS", "icon": "/css.svg" },
     { "name": "SAAVN API", "icon": "/jiosaavn.svg" }
   ],
-  "livePreviewUrl": "https://gahigi.ini.rw/",
-  "githubUrl": "https://github.com/Gaahigi/gahigi-monorepo",
+  "livePreviewUrl": "https://human-music.vercel.app/",
+  "githubUrl": "https://github.com/Akhilmak/Chords",
   "imageSrc": "/chords.jpg"
 },
   // {
