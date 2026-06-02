@@ -68,7 +68,9 @@ export default function Hero() {
             className="mt-10 flex flex-wrap justify-center gap-4"
           >
             <a
-              href="#"
+              href="/Akhil Kumar Madineni - AI Engineer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] active:scale-95"
             >
               <FaCodeBranch className="transition-transform group-hover:rotate-12" />
