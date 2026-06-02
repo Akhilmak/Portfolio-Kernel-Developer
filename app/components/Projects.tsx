@@ -1,216 +1,111 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import React from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
-const projects = [
-  {
-    "title": "TradeMind",
-    "description": "Trademind is a dynamic Trading platform designed for trading indivisuals tov iew and  track stock data. Built with a modern tech stack, TradeMind offers a rich set of features to foster interaction and creativity. TradeMind provides a seamless and intuitive user experience across devices",
-    "features": [
-      "Interview Practice: Simulates job interviews and offers constructive feedback.",
-      "Skill-Building Exercises: Interactive scenarios to develop essential workplace skills.",
-      "Personalized Career Advice: Tailored guidance based on individual strengths and interests.",
-      "Job Market Insights: Updates on entry-level opportunities in Rwanda's job market."
-    ],
-    "technologies": [
-      { "name": "Java", "icon": "/java.svg" },
-    { "name": "Java Script", "icon": "/javascript.svg" },
-    { "name": "SpringBoot", "icon": "/spring-boot.svg" },
-    { name: "Tailwind CSS", icon: "/tailwindcss.svg" },
-    { name: "React Query", icon: "/reactquery.svg" },
-    { "name": "Vite.js", "icon": "/vite.svg" },
-    { "name": "HTML", "icon": "/html.svg" },
-    { "name": "CSS", "icon": "/css.svg" },
-    { name: "Redux", icon: "/redux.svg" },
-      { "name": "shadcn UI ", icon: "/shadcnui.svg" },
-    ],
-    "livePreviewUrl": "https://trademind.vercel.app/",
-    "githubUrl": "https://github.com/Akhilmak/TradeMind",
-    "imageSrc": "/trademind.jpg"
-},
-{
-  "title": "Chords Music Player",
-  "description": 
-    "Meet Chords, your personal Music Player. Designed to help you play any music for free. Powered by Open Source API's Chords provide music streaming for free.",
-  "features": [
-    "Live Streaming: Streams Music in Real-Time.",
-    "Skill-Building Exercises: Interactive scenarios to develop essential workplace skills.",
-    "Personalized Career Advice: Tailored guidance based on individual strengths and interests.",
-    "Job Market Insights: Updates on entry-level opportunities in Rwanda's job market."
-  ],
-  "technologies": [
-    { "name": "Java", "icon": "/java.svg" },
-    { "name": "Vite.js", "icon": "/vite.svg" },
-    { "name": "Java Script", "icon": "/javascript.svg" },
-    { "name": "SpringBoot", "icon": "/spring-boot.svg" },
-    { "name": "HTML", "icon": "/html.svg" },
-    
-    { name: "Redux", icon: "/redux.svg" },
-    { "name": "CSS", "icon": "/css.svg" },
-    { "name": "SAAVN API", "icon": "/jiosaavn.svg" }
-  ],
-  "livePreviewUrl": "https://human-music.vercel.app/",
-  "githubUrl": "https://github.com/Akhilmak/Chords",
-  "imageSrc": "/chords.jpg"
-},
-  // {
-  //   title: "UniConnect",
-  //   description:
-  //     "UniConnect is a dynamic social media platform designed for students and individuals to connect, share ideas, and engage with their communities. Built with a modern tech stack, UniConnect offers a rich set of features to foster interaction, creativity, and collaboration. Whether you're posting updates, liking and commenting on posts, following peers, or engaging in direct messaging, UniConnect provides a seamless and intuitive user experience across devices",
-  //   features: [
-  //     "Google OAuth: Secure authentication with Google",
-  //     "Push Notifications: Real-time updates powered by Stream.",
-  //     "Customizable Profiles: User profiles with personalization options.",
-  //     "Infinite Scrolling: Continuous content discovery.",
-  //     "File Uploads: Drag-and-drop and copy-paste support",
-  //     "Direct Messaging: Private messaging with real-time updates",
-  //     "Likes, Follows, and Comments: Standard social interaction features",
-  //   ],
-  //   technologies: [
-  //     { name: "Nextjs", icon: "/nextdotjs.svg" },
-  //     { name: "Tailwind CSS", icon: "/tailwindcss.svg" },
-  //     { name: "Prisma ", icon: "/prisma.svg" },
-  //     { name: "PostgresSQL ", icon: "/postgresql.svg" },
-  //     { name: "Lucia ", icon: "/lucia.svg" },
-  //     { name: "stream ", icon: "/streamlit.svg" },
-  //     { name: "React Query", icon: "/reactquery.svg" },
-  //     { name: "shadcn UI ", icon: "/shadcnui.svg" },
-  //   ],
-  //   livePreviewUrl: "https://uni-connect-omega.vercel.app/",
-  //   githubUrl: "https://github.com/munyanezaarmel/UniConnect",
-  //   imageSrc: "/uniconnect.png",
-  // },
-  // {
-  //   title: "Restaurant Finder",
-  //   description:
-  //     "Restaurant Finder  is a web application that simplifies the process of finding the perfect restaurant based on your preferred cuisine. Whether you're craving Indian, Italian, Chinese, or any other type of food, this app lets you easily discover nearby restaurants offering your desired cuisine. With seamless Google Maps integration, you can view restaurant locations on an interactive map, get real-time directions from your current location, and make your dining decisions with confidence",
-  //   features: [
-  //     "Cuisine-Based Search",
-  //     "Interactive Map",
-  //     "Real-Time Directions",
-  //     "Responsive Design",
-  //     "User authentication Google Auth",
-  //   ],
-  //   technologies: [
-  //     { name: "Nextjs", icon: "/nextdotjs.svg" },
-  //     { name: "Tailwind CSS", icon: "/tailwindcss.svg" },
-  //     { name: "Google Map ", icon: "/googlemaps.svg" },
-  //   ],
-  //   livePreviewUrl: "https://restaurant-finder-sigma.vercel.app/",
-  //   githubUrl: "https://github.com/munyanezaarmel/restaurantFinder",
-  //   imageSrc: "/restaurantFinder.png",
-  // },
-
-  // {
-  //   title: "Mark8",
-  //   description:
-  //     "This E-commerce web showcases the development of modern E-commerce web applications using Next.js. The project aims to deliver a seamless user experience for viewing and purchasing products",
-  //   features: [
-  //     "Browse products",
-  //     "Add products to the cart",
-  //     "Save favorite products",
-  //     "Filter products by category",
-  //     "View store products",
-  //     "Search for products and stores",
-  //     "User authentication (login and sign up)",
-  //   ],
-  //   technologies: [
-  //     { name: "Nextjs", icon: "/nextdotjs.svg" },
-  //     { name: "NestJS", icon: "/nestjs.svg" },
-  //     { name: "Tailwind CSS", icon: "/tailwindcss.svg" },
-  //     { name: "React Query", icon: "/reactquery.svg" },
-  //     { name: "Redux", icon: "/redux.svg" },
-  //   ],
-  //   livePreviewUrl: "https://mark8-m31j.vercel.app/",
-  //   githubUrl: "https://github.com/munyanezaarmel/mark8",
-  //   imageSrc: "/mark8.png",
-  // },
-];
-const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`;
-const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`;
+import { projectsList } from "../data/portfolioData";
+import { Card, CardContent } from "./ui/card";
+import { Badge } from "./ui/badge";
+import {
+  FaCloud,
+  FaRoute,
+  FaChartLine,
+  FaShieldAlt,
+  FaArrowRight,
+  FaCodeBranch
+} from "react-icons/fa";
 
 export default function Projects() {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const getProjectIcon = (type: string) => {
+    switch (type) {
+      case "cloud":
+        return <FaCloud className="h-8 w-8 text-blue-400" />;
+      case "timeline":
+        return <FaRoute className="h-8 w-8 text-indigo-400" />;
+      case "chart":
+        return <FaChartLine className="h-8 w-8 text-sky-400" />;
+      case "shield":
+        return <FaShieldAlt className="h-8 w-8 text-teal-400" />;
+      default:
+        return <FaCodeBranch className="h-8 w-8 text-blue-400" />;
+    }
+  };
+
   return (
-    <div className="md:ml-40  px-4 md:px-0 mt-12 lg:mt-20">
-      <h3 className="mb-8 text-xl md:text-4xl text-white font-semibold">
-        Projects
-      </h3>
-      {projects.map((project, index) => (
+    <div className="py-20 px-6 md:px-12">
+      <div className="mx-auto max-w-6xl">
+        {/* Section Title */}
         <motion.div
-          initial={{ y: 50 }}
-          animate={{
-            y: 0,
-          }}
-          viewport={{ amount: 0.5 }}
-          whileHover={{ y: -10, transition: { duration: 0.2 } }}
-          transition={{ duration: 0.5, ease: "easeIn", delay: 0.1 * index }}
-          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="mb-12 flex items-center border-l-4 border-blue-500 pl-4"
         >
-          <div className=" card flex flex-col lg:flex-row lg:gap-12 justify-between items-start lg:items-center px-8 mb-12">
-            <div className="max-w-prose gray font-medium text-lg flex flex-col gap-4 w-full lg:w-1/2 mb-8 lg:mb-0">
-              <h1 className="text-white text-2xl mt-4">{project.title}</h1>
-              <p className="gray text-sm md:text-md leading-relaxed">
-                {project.description}
-              </p>
-              <p>Features:</p>
-              <ul className="text-sm md:text-md space-y-1">
-                {project.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center">
-                    <span className="text-[#607b96] mr-2">*</span>
-                    <p className="md:text-md text-sm">{feature}</p>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-wrap gap-4">
-                {project.technologies.map((tech, techIndex) => (
-                  <div key={techIndex} className="flex items-center gap-2">
-                    <Image
-                      src={tech.icon}
-                      alt={`${tech.name} icon`}
-                      width={25}
-                      height={25}
-                    />
-                    <span className="font-medium text-sm">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex justify-center items-center md:items-start md:justify-start flex-col sm:flex-row gap-4 md:mb-4">
-                <Link href={project.livePreviewUrl} target="_blank">
-                  <button className=" button back-gradient shadow-button w-full ">
-                    Live Preview
-                  </button>
-                </Link>
-                <Link href={project.githubUrl} target="_blank">
-                  <button className="hidden md:block border border-white text-white px-4 py-2 rounded-full font-bold cursor-pointer transition-opacity duration-300 w-full sm:w-[226px] h-[78px] text-lg hover:opacity-80">
-                    View on GitHub
-                  </button>
-                </Link>
-              </div>
-            </div>
-            <motion.div
-              initial={false}
-              animate={
-                imageLoaded
-                  ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
-                  : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
-              }
-              transition={{ duration: 1, delay: 0.5 }}
-              className="w-full lg:w-1/2 lg:pb-0 pb-4 lg:mt-0"
-            >
-              <Image
-                onLoad={() => setImageLoaded(true)}
-                src={project.imageSrc}
-                alt={`${project.title} project`}
-                layout="responsive"
-                width={100}
-                height={75}
-                className="rounded-xl"
-              />
-            </motion.div>
-          </div>
+          <span className="text-2xl md:text-3xl font-extrabold text-white flex items-center">
+            <FaCodeBranch className="mr-3 text-blue-500" />
+            Personal Projects
+          </span>
         </motion.div>
-      ))}
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          {projectsList.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              className="flex"
+            >
+              <Card className="flex flex-col justify-between overflow-hidden p-6 w-full">
+                <CardContent className="p-0 flex flex-col h-full justify-between">
+                  <div>
+                    {/* Header */}
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="rounded-2xl bg-blue-500/10 p-3">
+                        {getProjectIcon(project.iconType)}
+                      </div>
+                    </div>
+
+                    {/* Title & Desc */}
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-400 mb-6">{project.description}</p>
+                  </div>
+
+                  <div>
+                    {/* Tech Badges */}
+                    <div className="mb-6 flex flex-wrap gap-2">
+                      {project.tech.map((t) => (
+                        <Badge key={t} variant="secondary" className="bg-slate-900 border-slate-800 text-xs">
+                          {t}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    {/* Links */}
+                    <div className="flex flex-wrap gap-4 items-center mt-4">
+                      <a
+                        href={project.github}
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
+                      >
+                        GitHub <FaArrowRight className="h-3 w-3" />
+                      </a>
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors border-l border-slate-800 pl-4"
+                        >
+                          Live Demo <FaArrowRight className="h-3 w-3" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

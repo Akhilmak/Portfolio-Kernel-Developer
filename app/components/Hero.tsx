@@ -1,65 +1,82 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import React from "react";
 import { motion } from "framer-motion";
+import { FaTerminal, FaCodeBranch } from "react-icons/fa";
+import { personalInfo } from "../data/portfolioData";
+import { Badge } from "./ui/badge";
 
 export default function Hero() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const hiddenMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 30px, rgba(0,0,0,1) 30px, rgba(0,0,0,1) 30px)`;
-  const visibleMask = `repeating-linear-gradient(to right, rgba(0,0,0,0) 0px, rgba(0,0,0,0) 0px, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 30px)`;
   return (
-    <div className="">
-      <div className=" lg:flex lg:items-center justify-center items-center flex-col flex lg:flex-row lg:justify-around lg:mt-48 mt-20  ">
-        <div className="">
-          <p className="text lg:mx-0 mx-4 md:text-6xl text-2xl  font-semibold max-w-prose mb-8  ">
-            Hello, I&apos;m Akhil,
-          </p>
-          <p className="lg:mx-0 mx-4 text-white mb-8 md:text-6xl text-2xl font-semibold  ">
-            Software Engineer
-          </p>
-          <p className="lg:mx-0 mx-4 max-w-prose gray font-medium lg:text-lg text-sm mb-8 capitalize-sentences ">
-            Frontend Engineer using HTML, CSS, JavaScript, TypeScript, React,
-            and Next.js. Backend using Node.js, .NET Core, Express, SQL,
-            Postgres, and Prisma. Can assist in building robust web, mobile, and
-            desktop applications. Additionally, I can handle deployment tasks.
-          </p>
-          <div className="flex flex-col justify-center items-center md:justify-start md:items-start">
-            <a download href="/Akhil Madineni.pdf">
-              <button className="download-button button lg:mx-0  lg:mb-0 mb-12  ">
-                Download CV
-              </button>
-            </a>
-          </div>
-        </div>
-
-        <div className="container-profile lg:mb-0 md:mb-12">
-          <div className="profile-glow-2 "></div>
-          <div className="profile-glow"></div>
+    <div className="relative flex min-h-[75vh] flex-col justify-center px-6 py-16 md:px-12 md:py-24">
+      <div className="mx-auto w-full max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center text-center"
+        >
+          {/* Developer Badge */}
           <motion.div
-            // initial={false}
-            // animate={
-            //   imageLoaded
-            //     ? { WebkitMaskImage: visibleMask, maskImage: visibleMask }
-            //     : { WebkitMaskImage: hiddenMask, maskImage: hiddenMask }
-            // }
-            // transition={{ duration: 1, delay: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="mb-6"
           >
-            <Image
-              src="/myImage.jpg"
-              alt="Akhil - Software Engineer"
-              width={301}
-              height={301}
-              blurDataURL="/photo.jpg"
-              onLoad={() => setImageLoaded(true)}
-              quality={100}
-              priority={true}
-              placeholder="blur"
-              className="hover:scale-[1.025] transition-all duration-300 ease-in  profile-image filter "
-            />
+            <Badge variant="glow" className="flex items-center gap-2 py-1.5 px-4 text-xs tracking-wider uppercase">
+              <FaTerminal className="text-blue-400" />
+              {personalInfo.label}
+            </Badge>
           </motion.div>
-        </div>
+
+          {/* Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl"
+          >
+            <span className="bg-gradient-to-r from-blue-300 via-indigo-200 to-blue-400 bg-clip-text text-transparent">
+              {personalInfo.headline}
+            </span>
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="mt-4 text-xl font-bold text-blue-400 sm:text-2xl"
+          >
+            {personalInfo.tagline}
+          </motion.div>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg"
+          >
+            {personalInfo.description}
+          </motion.p>
+
+          {/* Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mt-10 flex flex-wrap justify-center gap-4"
+          >
+            <a
+              href="#"
+              className="group flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] active:scale-95"
+            >
+              <FaCodeBranch className="transition-transform group-hover:rotate-12" />
+              Resume / CV
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
-      <div className="md:ml-40 md:mt-0 mt-44 md:mx-0 mx-4"></div>
     </div>
   );
 }

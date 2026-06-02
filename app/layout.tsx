@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import Cursor from "./components/Cursor";
 import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
@@ -10,13 +9,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Akhil-Software Enginner",
-  description: "Akhil-Software Enginner",
+  title: "Akhil Kumar Madineni | AI Engineer Portfolio",
+  description: "Professional portfolio of Akhil Kumar Madineni, AI Engineer & Backend Software Engineer specializing in LangGraph, Temporal, and distributed workflows.",
   manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#030712",
 };
 
 export default function RootLayout({
@@ -25,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-back font-poppins">
-      <body className={poppins.className}>
-        <Cursor />
+    <html lang="en">
+      <body className={`${poppins.className} bg-slate-950 text-slate-100 min-h-screen relative`}>
+        <div className="animated-bg" />
         <Analytics />
         {children}
       </body>
