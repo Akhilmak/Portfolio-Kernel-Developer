@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { FaUser, FaBrain, FaServer, FaDatabase, FaCode, FaGithub, FaTerminal, FaCodeBranch, FaUsers, FaGlobe, FaStar, FaFolderOpen } from "react-icons/fa";
+import { FaUser, FaBrain, FaServer, FaDatabase, FaCode, FaGithub, FaTerminal, FaCodeBranch, FaUsers, FaGlobe, FaStar, FaFolderOpen, FaMicrochip } from "react-icons/fa";
+import { skillsData } from "../data/portfolioData";
 
 interface LeetCodeData {
   totalSolved: number;
@@ -112,56 +113,30 @@ export default function About() {
       });
   }, []);
 
-  const skillCategories = [
-    {
-      title: "Languages",
-      icon: <FaCode className="text-blue-400 h-5 w-5" />,
-      skills: ["Python", "Java", "JavaScript", "TypeScript", "SQL"]
-    },
-    {
-      title: "AI & Machine Learning",
-      icon: <FaBrain className="text-indigo-400 h-5 w-5" />,
-      skills: [
-        "LangChain",
-        "LangGraph",
-        "LangSmith",
-        "OpenAI API",
-        "RAG Pipelines",
-        "AI Agents",
-        "Qdrant",
-        "ChromaDB",
-        "Prompt Engineering"
-      ]
-    },
-    {
-      title: "Backend & DevOps",
-      icon: <FaServer className="text-emerald-400 h-5 w-5" />,
-      skills: [
-        "FastAPI",
-        "Temporal (Workflow Engine)",
-        "Spring Boot",
-        "Docker",
-        "Kubernetes",
-        "AWS (EC2, S3, CodeArtifact)",
-        "CI/CD (Jenkins, GitHub Actions)",
-        "Prometheus",
-        "Grafana"
-      ]
-    },
-    {
-      title: "Databases & ETL",
-      icon: <FaDatabase className="text-amber-400 h-5 w-5" />,
-      skills: [
-        "PostgreSQL",
-        "MySQL",
-        "MariaDB",
-        "Redshift",
-        "Pentaho",
-        "Prisma ORM",
-        "Hibernate"
-      ]
+  const getSkillIcon = (title: string) => {
+    switch (title) {
+      case "Languages":
+        return <FaCode className="text-blue-400 h-5 w-5" />;
+      case "Linux & Kernel":
+        return <FaTerminal className="text-sky-400 h-5 w-5" />;
+      case "Systems Programming":
+        return <FaMicrochip className="text-amber-400 h-5 w-5" />;
+      case "Data Structures & Algorithms":
+        return <FaBrain className="text-indigo-400 h-5 w-5" />;
+      case "Tools & DevOps":
+        return <FaServer className="text-emerald-400 h-5 w-5" />;
+      case "Databases":
+        return <FaDatabase className="text-rose-400 h-5 w-5" />;
+      default:
+        return <FaCode className="text-blue-400 h-5 w-5" />;
     }
-  ];
+  };
+
+  const skillCategories = skillsData.categories.map(cat => ({
+    title: cat.title,
+    icon: getSkillIcon(cat.title),
+    skills: cat.skills
+  }));
 
   return (
     <div className="py-20 px-6 md:px-12">
@@ -194,12 +169,7 @@ export default function About() {
               <CardContent className="p-0">
                 <h3 className="text-xl font-bold text-white mb-4">Professional Summary</h3>
                 <p className="text-base leading-relaxed text-slate-300">
-                  AI Engineer with over <strong>1.5 years of experience</strong> building production large language model (LLM)
-                  applications, retrieval-augmented generation (RAG) pipelines, and agent-based AI workflows. 
-                  Accelerated enterprise automation by <strong>35% through multi-agent system design</strong> using LangGraph. 
-                  Delivered a <strong>40% uplift in answer precision</strong> across enterprise knowledge bases via RAG-driven solutions. 
-                  Expertise in LangChain, LangGraph, Temporal workflow engines, vector databases (Qdrant, ChromaDB), and SOC 2 compliance. 
-                  Seeking to scale intelligent, highly resilient systems.
+                  {skillsData.summary}
                 </p>
               </CardContent>
             </Card>
